@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,36 +8,93 @@
     <link rel="stylesheet" href="Materiel add.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <main>
-        <div id="container">
-            <!-- Dynamically added boxes will appear here -->
+        <section>
+            <div id="container">
+                <h3>Material Details</h3>
+                <div class="material-details">
+                    <p><strong>Name:</strong> <input type="text" id="materialName" placeholder="Enter material name" />
+                    </p>
+                    <p><strong>Size:</strong> <input type="text" id="materialSize"
+                            placeholder="Enter material size (e.g., 50 kg)" /></p>
+                    <p><strong>Incoming Data:</strong> <input type="number" id="incomingData"
+                            placeholder="Enter incoming data" /></p>
+                </div>
+                <div class="current-stock">
+                    <h4>Current Stock</h4>
+                    <p><strong>Incoming Data:</strong><input type="number" id="currentStock"
+                            placeholder="Enter current stock" /></p>
+                </div>
+
+            </div>
+            <div id="container_addedM">
+                <div class="material-info">
+        <!-- <h3>Material Details</h3>
+        <div class="material-details">
+            <p><strong>Name:</strong> ${materialName}</p>
+            <p><strong>Size:</strong> ${materialSize}</p>
+            <p><strong>Incoming Data:</strong> ${incomingData}</p>
         </div>
+        <div class="current-stock">
+            <h4>Current Stock</h4>
+            <p>${currentStock} bags</p>
+        </div> -->
+    </div>
+            </div>
+        </section>
+        <!-- Floating button -->
         <button class="floating-button" onclick="addMaterialBox()">+</button>
     </main>
 
     <script>
+        // Function to add a new material box with user input
         function addMaterialBox() {
-            const container = document.getElementById('container');
+            // Get the user input values
+            const materialName = document.getElementById("materialName").value;
+            const materialSize = document.getElementById("materialSize").value;
+            const incomingData = document.getElementById("incomingData").value;
+            const currentStock = document.getElementById("currentStock").value;
 
+            // Ensure that the input fields are not empty
+            if (!materialName || !materialSize || !incomingData || !currentStock) {
+                alert('Please fill in all fields before adding.');
+                return;
+            }
+
+            // Create a new container box to hold the new material details
             const box = document.createElement('div');
-            box.className = 'material-box';
+            box.className = 'material-box';  // Adding class for styling
 
+            // Add content to the box
             box.innerHTML = `
-                <h3>Material Details</h3>
-                <div class="material-details">
-                    <p><strong>Name:</strong> Cement</p>
-                    <p><strong>Size:</strong> 50 kg</p>
-                    <p><strong>Incoming Data:</strong> 200 bags</p>
-                </div>
-                <div class="current-stock">
-                    <h4>Current Stock</h4>
-                    <p>150 bags</p>
-                </div>
-            `;
+    <div class="material-info">
+        <h3>Material Details</h3>
+        <div class="material-details">
+            <p><strong>Name:</strong> ${materialName}</p>
+            <p><strong>Size:</strong> ${materialSize}</p>
+            <p><strong>Incoming Data:</strong> ${incomingData}</p>
+        </div>
+        <div class="current-stock">
+            <h4>Current Stock</h4>
+            <p>${currentStock} bags</p>
+        </div>
+    </div>
+`;
 
+
+            // Append the new box to the container
+            const container = document.getElementById('container');
             container.appendChild(box);
+
+            // Optionally, clear the input fields after adding the new box
+            document.getElementById("materialName").value = '';
+            document.getElementById("materialSize").value = '';
+            document.getElementById("incomingData").value = '';
+            document.getElementById("currentStock").value = '';
         }
     </script>
 </body>
+
 </html>
