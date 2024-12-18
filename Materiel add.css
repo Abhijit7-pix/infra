@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+main {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+}
+
+.material-box {
+    width: 300px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: left;
+}
+
+.material-box h3 {
+    font-size: 1.5rem;
+    color: #3498db;
+}
+
+.material-details p,
+.current-stock p {
+    font-size: 1rem;
+}
+
+.current-stock {
+    background-color: #f0f9ff;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.current-stock h4 {
+    font-size: 1.2rem;
+    color: #2c3e50;
+}
+
+.floating-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #3498db;
+    color: white;
+    font-size: 2rem;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.floating-button:hover {
+    background-color: #2980b9;
+}
+
+@media (max-width: 768px) {
+    .material-box {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .floating-button {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+    .material-box {
+        padding: 15px;
+    }
+    .material-box h3 {
+        font-size: 1.2rem;
+    }
+    .material-details p,
+    .current-stock p {
+        font-size: 0.9rem;
+    }
+    .current-stock h4 {
+        font-size: 1rem;
+    }
+}

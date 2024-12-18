@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Civil Stock Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="javascript" href="app.js">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="company-info">
+        <div class="company-name">
+            <h1>ROHIT</h1>
+        </div>
+        <div class="company-logo">
+            <img src="logo.png" alt="Company Logo" />
+        </div>
+    </header>
+    
+    <main>
+        <section class="content">
+            <div class="box" id="box1" onclick="handleClick('3D View 1')">
+                <h2> Add 3D View 1</h2>
+            </div>
+            <div class="box" id="box2" onclick="handleClick('3D View 2')">
+                <h2>Add 3D View 2</h2>
+            </div>
+        </section>
+
+        <section class="new-section">
+            <button id="box_new" onclick="addNewSection()">Add New Section</button>
+        </section>
+    </main>
+    <script>
+        function handleClick(view) {
+            alert(`You clicked on ${view}`);
+        }
+
+        function addNewSection() {
+            const main = document.querySelector('main');
+            const newDiv = document.createElement('div');
+            newDiv.className = 'box';
+            newDiv.textContent = 'New 3D View';
+            newDiv.onclick = () => handleClick('New 3D View');
+            main.appendChild(newDiv);
+        }
+    </script>
+
+
+</body>
+</html>
