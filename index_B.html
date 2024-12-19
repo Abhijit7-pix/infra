@@ -15,17 +15,25 @@
             <div id="container">
                 <h3>Material Details</h3>
                 <div class="material-details">
-                    <p><strong>Name:</strong> <input type="text" id="materialName" placeholder="Enter material name" />
-                    </p>
+                    <p>
+                        <strong>Name:</strong>
+                        <select id="materialName">
+                          <option value="" disabled selected>Select material</option>
+                          <option value="cement">Cement</option>
+                          <option value="sand">Sand</option>
+                          <option value="bricks">Bricks</option>
+                          <option value="steel">Steel</option>
+                        </select>
+                      </p>
                     <p><strong>Size:</strong> <input type="text" id="materialSize"
                             placeholder="Enter material size (e.g., 50 kg)" /></p>
-                    <p><strong>Incoming Data:</strong> <input type="number" id="incomingData"
-                            placeholder="Enter incoming data" /></p>
+                    <p><strong>Update stock</strong> <input type="number" id="Stockadd_remove"
+                            placeholder="Stock add/remove" /></p>
                 </div>
                 <div class="current-stock">
                     <h4>Current Stock</h4>
-                    <p><strong>Incoming Data:</strong><input type="number" id="currentStock"
-                            placeholder="Enter current stock" /></p>
+                    <p><strong></strong><input type="number" id="currentStock"
+                            placeholder="Live Stock" /></p>
                 </div>
 
             </div>
@@ -35,7 +43,7 @@
         <div class="material-details">
             <p><strong>Name:</strong> ${materialName}</p>
             <p><strong>Size:</strong> ${materialSize}</p>
-            <p><strong>Incoming Data:</strong> ${incomingData}</p>
+            <p><strong>Incoming Data:</strong> ${Stockadd_remove}</p>
         </div>
         <div class="current-stock">
             <h4>Current Stock</h4>
@@ -54,11 +62,11 @@
             // Get the user input values
             const materialName = document.getElementById("materialName").value;
             const materialSize = document.getElementById("materialSize").value;
-            const incomingData = document.getElementById("incomingData").value;
+            const Stockadd_remove = document.getElementById("Stockadd_remove").value;
             const currentStock = document.getElementById("currentStock").value;
 
             // Ensure that the input fields are not empty
-            if (!materialName || !materialSize || !incomingData || !currentStock) {
+            if (!materialName || !materialSize || !Stockadd_remove || !currentStock) {
                 alert('Please fill in all fields before adding.');
                 return;
             }
@@ -74,7 +82,7 @@
         <div class="material-details">
             <p><strong>Name:</strong> ${materialName}</p>
             <p><strong>Size:</strong> ${materialSize}</p>
-            <p><strong>Incoming Data:</strong> ${incomingData}</p>
+            <p><strong>updated data </strong> ${Stockadd_remove}</p>
         </div>
         <div class="current-stock">
             <h4>Current Stock</h4>
@@ -91,7 +99,7 @@
             // Optionally, clear the input fields after adding the new box
             document.getElementById("materialName").value = '';
             document.getElementById("materialSize").value = '';
-            document.getElementById("incomingData").value = '';
+            document.getElementById("Stockadd_remove").value = '';
             document.getElementById("currentStock").value = '';
         }
     </script>

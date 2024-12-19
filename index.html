@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="javascript" href="app.js">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <header class="company-info">
         <div class="company-name">
@@ -17,28 +19,73 @@
             <img src="logo.png" alt="Company Logo" />
         </div>
     </header>
-    
+
     <main>
         <section class="content">
-            <div class="box" id="box1" onclick="handleClick('3D View 1')">
-                <h2> Add 3D View 1</h2>
+            <div class="box" id="box1" onmousedown="startLongPress(event, 'box1')" onmouseup="cancelLongPress()"
+                onmouseleave="cancelLongPress()">
+                <h2>3D View 1</h2>
             </div>
-            <div class="box" id="box2" onclick="handleClick('3D View 2')">
-                <h2>Add 3D View 2</h2>
+            <div class="box" id="box2" onmousedown="startLongPress(event, 'box2')" onmouseup="cancelLongPress()"
+                onmouseleave="cancelLongPress()">
+                <h2>3D View 2</h2>
             </div>
         </section>
+
+        <input type="file" id="imageUploader" accept="image/*" style="display: none;" onchange="uploadImage(event)">
+
 
         <section class="new-section">
             <button id="box_new" onclick="addNewSection()">Add New Section</button>
         </section>
     </main>
     <script>
-        function handleClick(view) {
-            alert(`You clicked on ${view}`);
-            window.location.href = "index_B.html";
+        let pressTimer; // Timer for detecting long press
+        let selectedBox; // Store the clicked box ID
 
+        // Detect long press
+        function startLongPress(event, boxId) {
+            selectedBox = document.getElementById(boxId);
+
+            // Start a timer for long press detection
+            pressTimer = setTimeout(() => {
+                // Trigger file input when long press is detected
+                document.getElementById("imageUploader").click();
+            }, 1000); // 1000ms = 1 second
         }
 
+        // Cancel long press if the mouse is released or moved away
+        function cancelLongPress() {
+            clearTimeout(pressTimer);
+        }
+
+        // Handle image upload and add it to the selected box
+        let imageUploaded = false;  // Track if an image is uploaded
+
+        function uploadImage(event) {
+            const file = event.target.files[0];
+            if (file && selectedBox) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    selectedBox.innerHTML = `<img src="${e.target.result}" alt="Uploaded Image">`;
+                    imageUploaded = true;  // Set the flag to true after the image is uploaded
+
+                    // Add a click event to all the boxes that triggers the redirect
+                    document.querySelectorAll('.box').forEach(box => {
+                        box.onclick = function () {
+                            if (imageUploaded) {
+                                window.location.href = "index_B.html";  // Redirect to the other page
+                            } else {
+                                alert("No image uploaded!");
+                            }
+                        };
+                    });
+                };
+                reader.readAsDataURL(file);  // Convert image to data URL
+            }
+        }
+
+        // for new sight adding
         function addNewSection() {
             const main = document.querySelector('main');
             const newDiv = document.createElement('div');
@@ -51,4 +98,5 @@
 
 
 </body>
+
 </html>
