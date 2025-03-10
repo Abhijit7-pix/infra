@@ -33,18 +33,16 @@ main {
   margin-bottom: 20px;
 }
 .box {
-  flex: 1;
-  min-width: 300px;
-  max-width: 450px;
-  padding: 20px;
-  margin-top: 20px;
-  background-color: #fff;
-  border: 2px solid #ccc;
-  border-radius: 8px;
-  text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
-  cursor: pointer;
+  width: 300px;  /* Width of the box (matches 300px) */
+  height: 400px;  /* Height of the box (matches 400px) */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;  /* Ensures that the image stays within the box without spilling out */
+  border: 2px solid #007BFF;  /* Border for the box */
+  border-radius: 8px;  /* Rounded corners for the box */
+  background-color: #f9f9f9;
+  position: relative;
 }
 .box:hover {
   transform: scale(1.05);
@@ -62,7 +60,7 @@ main {
     right: 20px;
     width: 60px;
     height: 60px;
-    border-radius: 55%;
+    border-radius: 70%;
     background-color: #007BFF;
     color: white;
     font-size: 30px;
